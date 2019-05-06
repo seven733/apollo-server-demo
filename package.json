@@ -1,0 +1,23 @@
+{
+  "name": "koa",
+  "version": "1.0.0",
+  "description": "test",
+  "main": "sever.js",
+  "author": "seven",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon sever.js"
+  },
+  "dependencies": {
+    "apollo-server-koa": "^2.4.8",
+    "bluebird": "^3.5.3",
+    "graphql": "^14.1.1",
+    "graphql-tools": "^4.0.4",
+    "merge-graphql-schemas": "^1.5.8",
+    "mongoose": "^5.4.19",
+    "ramda": "^0.26.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
+}

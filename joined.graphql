@@ -1,0 +1,95 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Query {
+  #  文章查询 
+  """ 文章查询 """
+  articles(title: String): [Article!]!
+  #  用户信息 
+  """ 用户信息 """
+  users(name: String, isVip: Boolean): [User!]!
+}
+
+type Mutation {
+  #  创建用户 
+  """ 创建用户 """
+  createUser(user: CreateUser!): User
+  #  更新用户信息 
+  """ 更新用户信息 """
+  updateUser(id: ID, user: UpdateUser!): User
+  #  更新用户信息 
+  """ 更新用户信息 """
+  deleteUser(id: ID): SuccessResult!
+}
+
+type Article {
+  #  文章ID 
+  """ 文章ID """
+  _id: ID!
+  #  标题 
+  """ 标题 """
+  title: String!
+  #  描述信息 
+  """ 描述信息 """
+  description: String!
+  #  期号 
+  """ 期号 """
+  num: Int!
+  #  链接 
+  """ 链接 """
+  url: String!
+  #  标签 
+  """ 标签 """
+  tags: [String]!
+}
+
+type SuccessResult {
+  success: Boolean!
+}
+
+type User {
+  #  用户ID 
+  """ 用户ID """
+  id: ID!
+  #  用户名称 
+  """ 用户名称 """
+  name: String!
+  #  用户年龄 
+  """ 用户年龄 """
+  age: Int!
+  #  性别 
+  """ 性别 """
+  sex: String!
+  #  用户手机号码 
+  """ 用户手机号码 """
+  mobile: String!
+  #  用户 微信号 
+  """ 用户 微信号 """
+  wechat: String
+  #  用户 状态 
+  """ 用户 状态 """
+  status: String
+  #  是否VIP 
+  """ 是否VIP """
+  isVip: Boolean!
+}
+
+input CreateUser {
+  name: String!
+  age: Int!
+  sex: String
+  mobile: String!
+  wechat: String!
+  status: String
+  isBVp: Boolean
+}
+
+input UpdateUser {
+  age: Int
+  sex: String
+  wechat: String
+  status: String
+  isVip: Boolean!
+}

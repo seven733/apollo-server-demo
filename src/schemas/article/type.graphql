@@ -1,0 +1,58 @@
+type Query {
+  """ 文章查询 """
+  articleList(title: String, num: Int, tag: String, start: Int, limit: Int): ArticleList!
+
+  """ 查询标签  """
+  tagStatistics: [TagStatistic!]!
+}
+
+type Mutation {
+  """ 新建文章 """
+  createArticle(article: CreateArticle): Article
+}
+
+type Article {
+  """ 文章ID """
+  _id: ID!
+
+  """ 标题 """
+  title: String!
+
+  """ 描述信息 """
+  description: String!
+
+  """ 期号 """
+  num: Int!
+
+  """ 链接 """
+  url: String!
+
+  """ 标签 """
+  tags: [String]!
+}
+
+type ArticleList {
+  totalCount: Int
+
+  articles: [Article]
+}
+
+
+type TagStatistic {
+  """ 标签名称 """
+  name: String!
+
+  """  当前标签数量 """
+  count: Int!
+}
+
+input CreateArticle {
+  title: String
+
+  url: String
+
+  description: String
+
+  tags: [String]
+}
+
