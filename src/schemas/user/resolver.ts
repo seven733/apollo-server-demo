@@ -1,10 +1,10 @@
-const UserService = require('../../service/user');
-const R = require('ramda');
+import UserService from 'services/user';
+import * as R from 'ramda';
 
 const resolvers = {
   Query: {
-    users: async (_, args) => {
-      let query = {};
+    users: async (_: any, args: any) => {
+      let query: any = {};
       if (!R.isNil(args.name)) {
         query.name = args.name;
       }
@@ -12,7 +12,7 @@ const resolvers = {
         query.isVip = args.isVip;
       }
       return await UserService.getUsers(query);
-    }
+    },
   },
   Mutation: {
     createUser: async (_, args) => {
@@ -23,9 +23,8 @@ const resolvers = {
     },
     deleteUser: async (_, args) => {
       return await UserService.deleteUser(args.id);
-    }
-  }
+    },
+  },
 };
 
-
-module.exports = resolvers;
+export default resolvers;
