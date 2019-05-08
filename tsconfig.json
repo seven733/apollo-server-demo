@@ -14,11 +14,6 @@
     "outDir": "./dist",
     "baseUrl": "./src"
   },
-  "paths" : {
-    "ramda": [
-      "location-of-types/npm-ramda-package/index"
-    ]
-  },
   "include": [
     "src/**/*"
   ],

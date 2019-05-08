@@ -37,28 +37,40 @@ async function createArticle(data) {
   return await Article.create(data);
 }
 
-/**
- *  获取各标签的统计信息,取出数量最多的19个标签，其余统一到其他标签中
- */
 async function getTagStatistics() {
-  const counter: any = await Article.aggregate([
+  const tags: Article.Tag[] = await Article.aggregate([
     { $match: { _id: { $exists: true } } },
     { $unwind: '$tags' },
     { $group: { _id: '$tags', count: { $sum: 1 } } },
     { $sort: { count: -1 } },
   ]);
 
-  const sum = (a, c) => {
+  const sum = (a: Article.Tag, c: Article.Tag): Article.Tag => {
     a.count += c.count;
     return a;
   };
-  const mapFn = o => ({ name: o._id, count: o.count });
-  return R.compose(
-    R.map(mapFn),
-    R.append(R.__, R.take(19, counter)),
-    R.reduce(sum, { _id: '其他', count: 0 }),
-    R.takeLast(R.subtract(counter.length, 19)),
-  )(counter);
+  const replaceKey = (o: Article.Tag) :Article.Tag => ({ name: o._id, count: o.count });
+
+   // 获取各标签的统计信息,取出统计信息最多的num项，其余的统一到其他标签中
+  const statistic = (num: number, data: Article.Tag[]) => R.compose(
+    R.map(replaceKey),
+    R.converge(
+      R.concat,
+      [
+        R.take(num),
+        R.compose(
+          R.of,
+          R.reduce(sum, { _id: '其他', count: 0 }),
+          R.converge(
+            R.takeLast,
+            [R.pipe(R.length, R.subtract(R.__, num)), R.identity]
+          )
+        )
+      ]
+    )
+  )(data);
+
+  return statistic(19, tags);
 }
 
 export default {
