@@ -1,3 +1,8 @@
+## Mock Data
+
+`python mock.py`
+
+
 ## Available Scripts
 
 In the project directory, you can run:
