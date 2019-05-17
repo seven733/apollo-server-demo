@@ -73,8 +73,20 @@ async function getTagStatistics() {
   return statistic(19, tags);
 }
 
+async function starArticle(id) {
+  await Article.updateOne({ _id: id }, { $inc: { star: 1 } })
+  return { success: true };
+}
+
+async function collectArticle(id) {
+  await Article.updateOne({ _id: id }, { $inc: { collect: 1 } })
+  return { success: true };
+}
+
 export default {
   getArticles,
   createArticle,
   getTagStatistics,
+  starArticle,
+  collectArticle,
 };

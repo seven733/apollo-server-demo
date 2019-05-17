@@ -13,6 +13,12 @@ const resolvers = {
     createArticle: async (_, args) => {
       return await ArticleService.createArticle(args.article);
     },
+    starArticle: async (_, args) => {
+      return await ArticleService.starArticle(args.id)
+    },
+    collectArticle: async (_, args) => {
+      return await ArticleService.collectArticle(args.id)
+    },
   },
 };
 

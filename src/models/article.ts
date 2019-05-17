@@ -13,6 +13,10 @@ const articleSchema = new Schema(
     url: { type: String },
     // 标签
     tags: { type: [String], default: [] },
+    // star数
+    star: { type: Number, default: 0 },
+    // 收藏数
+    collect: { type: Number, default: 0 }
   },
   { timestamps: true },
 );

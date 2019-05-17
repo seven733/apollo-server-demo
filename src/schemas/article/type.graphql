@@ -4,13 +4,22 @@ type Query {
 
   """ 查询标签  """
   tagStatistics: [TagStatistic!]!
+
 }
 
 type Mutation {
   """ 新建文章 """
   createArticle(article: CreateArticle): Article
+  """ star """
+  starArticle(id: String): SuccessResponses!
+
+  """ 收藏 """
+  collectArticle(id: String): SuccessResponses!
 }
 
+type SuccessResponses {
+  success: Boolean!
+}
 type Article {
   """ 文章ID """
   _id: ID!
