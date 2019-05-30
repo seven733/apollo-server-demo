@@ -83,10 +83,27 @@ async function collectArticle(id) {
   return { success: true };
 }
 
+async function getArticleDetail (id) {
+  return await Article.findOne({ _id: id });
+}
+
+async function unstarArticle(id) {
+  await Article.updateOne({ _id: id }, { $inc: { star: -1 } })
+  return { success: true };
+}
+
+async function cancelCollectArticle(id) {
+  await Article.updateOne({ _id: id }, { $inc: { collect: -1 } })
+  return { success: true };
+}
+
 export default {
   getArticles,
+  getArticleDetail,
   createArticle,
   getTagStatistics,
   starArticle,
   collectArticle,
+  unstarArticle,
+  cancelCollectArticle
 };

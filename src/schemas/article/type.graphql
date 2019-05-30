@@ -2,6 +2,9 @@ type Query {
   """ 文章查询 """
   articleList(title: String, num: Int, tag: String, start: Int, limit: Int): ArticleList!
 
+  """ 文章查询 """
+  articleDetail(id: String!): Article!
+
   """ 查询标签  """
   tagStatistics: [TagStatistic!]!
 
@@ -13,8 +16,13 @@ type Mutation {
   """ star """
   starArticle(id: String): SuccessResponses!
 
+  """ star """
+  unstarArticle(id: String): SuccessResponses!
+
   """ 收藏 """
   collectArticle(id: String): SuccessResponses!
+  """ 取消收藏 """
+  cancelCollectArticle(id: String): SuccessResponses!
 }
 
 type SuccessResponses {
@@ -38,6 +46,12 @@ type Article {
 
   """ 标签 """
   tags: [String]!
+
+  """ star数 """
+  star: Int
+
+  """ 收藏数 """
+  collect: Int
 }
 
 type ArticleList {

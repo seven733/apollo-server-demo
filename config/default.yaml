@@ -1,0 +1,9 @@
+PORT: 4000
+secret: seven
+mongo:
+  host: localhost
+  port: 27017
+  dbName: graphql
+jwtOption:
+  maxAge: 3600000
+  httpOnly: true

@@ -1,5 +1,7 @@
 import * as mongoose from 'mongoose';
-const mongoUrl = 'mongodb://localhost/graphql';
+import * as config from "config";
+const mongoConfig = config.get('mongo');
+const mongoUrl = `mongodb://${mongoConfig.host}:${mongoConfig.port}/${mongoConfig.dbName}`;
 
 const db = () => {
   mongoose.set('useCreateIndex', true);

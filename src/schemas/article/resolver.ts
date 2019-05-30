@@ -5,6 +5,9 @@ const resolvers = {
     articleList: async (_, args) => {
       return await ArticleService.getArticles(args);
     },
+    articleDetail: async (_, args) => {
+      return await ArticleService.getArticleDetail(args.id)
+    },
     tagStatistics: async (_, args) => {
       return await ArticleService.getTagStatistics();
     },
@@ -18,6 +21,12 @@ const resolvers = {
     },
     collectArticle: async (_, args) => {
       return await ArticleService.collectArticle(args.id)
+    },
+    unstarArticle: async (_, args) => {
+      return await ArticleService.unstarArticle(args.id)
+    },
+    cancelCollectArticle: async (_, args) => {
+      return await ArticleService.cancelCollectArticle(args.id)
     },
   },
 };

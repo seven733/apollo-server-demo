@@ -11,15 +11,6 @@ module.exports = {
       whitelist: ['webpack/hot/poll?1000'],
     }),
   ],
-  module: {
-    rules: [
-      {
-        test: /\.tsx?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/,
-      },
-    ],
-  },
   mode: "development",
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
