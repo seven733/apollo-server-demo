@@ -14,6 +14,18 @@
   resolved "http://registry.npm.taobao.org/@apollographql/graphql-playground-html/download/@apollographql/graphql-playground-html-1.6.6.tgz#022209e28a2b547dcde15b219f0c50f47aa5beb3"
   integrity sha1-AiIJ4oorVH3N4VshnwxQ9HqlvrM=
 
+"@hapi/boom@^7.4.2":
+  version "7.4.2"
+  resolved "https://registry.npm.taobao.org/@hapi/boom/download/@hapi/boom-7.4.2.tgz#c16957cd09796f6c1bfb4031bdc39d66d6d750c3"
+  integrity sha1-wWlXzQl5b2wb+0AxvcOdZtbXUMM=
+  dependencies:
+    "@hapi/hoek" "6.x.x"
+
+"@hapi/hoek@6.x.x":
+  version "6.2.4"
+  resolved "https://registry.npm.taobao.org/@hapi/hoek/download/@hapi/hoek-6.2.4.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40hapi%2Fhoek%2Fdownload%2F%40hapi%2Fhoek-6.2.4.tgz#4b95fbaccbfba90185690890bdf1a2fbbda10595"
+  integrity sha1-S5X7rMv7qQGFaQiQvfGi+72hBZU=
+
 "@koa/cors@^2.2.1":
   version "2.2.3"
   resolved "http://registry.npm.taobao.org/@koa/cors/download/@koa/cors-2.2.3.tgz#c32a9907acbee1e72fedfb0b9ac840d2e6f9be57"

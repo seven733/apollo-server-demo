@@ -1,19 +1,34 @@
+import * as Boom from '@hapi/boom';
+import * as config from "config";
+
 export const errorHandler = async (ctx, next) => {
   try {
     await next();
   } catch (err) {
-    ctx.status = err.statusCode || err.status || 500;
+    if (Boom.isBoom(err)) {
+      const { output: { statusCode, payload } } = err;
+      ctx.body = {
+        status: statusCode,
+        message: payload.message,
+        error: payload.error
+      }
+      return
+    }
+
     ctx.body = {
-      message: err.message,
-      code: ctx.status
-    };
+      status: 500,
+      error: 'Internal Error',
+      message: err.message
+    }
   }
 };
 
-export const cors =  async (ctx, next) => {
-  ctx.set('Access-Control-Allow-Origin', 'localhost:3001');
-  ctx.set('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE, PUT');
+export const cors = async (ctx, next) => {
+  ctx.set('Access-Control-Allow-Origin', config.domain);
+  ctx.set('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
   ctx.set('Access-Control-Allow-Credentials', 'true');
+
+  console.log(`${ctx.method} ${ctx.path}`);
   if (ctx.method !== 'OPTIONS') {
     await next();
   } else {

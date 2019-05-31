@@ -1,7 +1,7 @@
 import * as mongoose from 'mongoose';
 import * as config from "config";
-const mongoConfig = config.get('mongo');
-const mongoUrl = `mongodb://${mongoConfig.host}:${mongoConfig.port}/${mongoConfig.dbName}`;
+const { host, port, dbName }  = config.get('mongo');
+const mongoUrl = `mongodb://${host}:${port}/${dbName}`;
 
 const db = () => {
   mongoose.set('useCreateIndex', true);
