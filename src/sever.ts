@@ -21,7 +21,7 @@ router.post('/api/register', async ctx => await UserService.register(ctx));
 app
   .use(cors)
   .use(koaJwt({ secret, getToken: (ctx) => ctx.cookies.get('token')})
-    .unless({ path: [ '/api/login', '/api/register' ] }))
+    .unless({ path: [ '/api/login', '/api/register', '/graphql' ] }))
   .use(errorHandler)
   .use(bodyParser())
   .use(router.routes())
