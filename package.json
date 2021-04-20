@@ -16,7 +16,7 @@
   "dependencies": {
     "@hapi/boom": "^7.4.2",
     "apollo-server-koa": "^2.4.8",
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "config": "^3.1.0",
     "graphql": "^14.1.1",
     "graphql-tools": "^4.0.4",
