@@ -1,4 +1,4 @@
-import ArticleService from 'services/article/index';
+import ArticleService from '../../services/article/index';
 
 const resolvers = {
   Query: {

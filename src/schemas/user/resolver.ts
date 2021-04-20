@@ -1,4 +1,4 @@
-import UserService from 'services/user';
+import UserService from '../../services/user';
 import * as R from 'ramda';
 
 const resolvers = {

@@ -1,5 +1,5 @@
-import { Article } from 'models/article';
-import { getPageInfo } from 'utils/page';
+import { Article } from '../../models/article';
+import { getPageInfo } from '../../utils/page';
 import * as R from 'ramda';
 
 const buildQuery = (query: any) => {

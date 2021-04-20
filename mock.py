@@ -20,7 +20,7 @@ def update():
     db.goods.remove({})
     users, goods = [], []
     for _ in range(30):
-    person = Person(locales.ZH)
+        person = Person(locales.ZH)
         user = {
             "name": person.name(),
             "age": person.age(),
@@ -35,5 +35,3 @@ def update():
 
 if __name__ == '__main__':
     update()
-
-

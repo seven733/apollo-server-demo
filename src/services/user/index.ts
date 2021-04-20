@@ -1,7 +1,7 @@
 import * as Boom from '@hapi/boom';
-import { User } from 'models/user';
-import JWT from 'utils/jwt';
-import { getHashPassword, compareHashPassword } from 'utils/encrytp';
+import { User } from '../../models/user';
+import JWT from '../../utils/jwt';
+import { getHashPassword, compareHashPassword } from '../../utils/encrytp';
 import * as config from "config";
 const { jwtOption } = config;
 

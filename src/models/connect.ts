@@ -28,4 +28,5 @@ const db = () => {
   );
 };
 
+console.log('db', db)
 export { db };

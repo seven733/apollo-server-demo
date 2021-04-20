@@ -2,12 +2,13 @@ import * as Koa from 'koa';
 import * as koaJwt from 'koa-jwt'
 import * as Router from 'koa-router';
 const bodyParser = require('koa-bodyparser');
-import { ApolloServer } from 'apollo-server-koa';
+// import { ApolloServer } from 'apollo-server-koa';
+const { ApolloServer } = require('apollo-server-koa');
 import { typeDefs, resolvers } from './schemas/index';
-import UserService from 'services/user';
+import UserService from './services/user';
 import * as config from "config";
 import { errorHandler, cors } from './middleware';
-import { db } from 'models/connect';
+import { db } from './models/connect';
 db();
 
 const router = new Router();
