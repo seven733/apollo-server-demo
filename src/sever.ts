@@ -1,5 +1,6 @@
 import * as Koa from 'koa';
 import * as koaJwt from 'koa-jwt'
+const cors = require('koa2-cors')
 import * as Router from 'koa-router';
 const bodyParser = require('koa-bodyparser');
 // import { ApolloServer } from 'apollo-server-koa';
@@ -7,7 +8,7 @@ const { ApolloServer } = require('apollo-server-koa');
 import { typeDefs, resolvers } from './schemas/index';
 import UserService from './services/user';
 import * as config from "config";
-import { errorHandler, cors } from './middleware';
+import { errorHandler } from './middleware';
 import { db } from './models/connect';
 db();
 
@@ -20,7 +21,7 @@ router.post('/api/login', async ctx => await UserService.login(ctx));
 router.post('/api/register', async ctx => await UserService.register(ctx));
 
 app
-  .use(cors)
+  .use(cors())
   .use(koaJwt({ secret, getToken: (ctx) => ctx.cookies.get('token')})
     .unless({ path: [ '/api/login', '/api/register', '/graphql' ] }))
   .use(errorHandler)

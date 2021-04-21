@@ -23,16 +23,16 @@ export const errorHandler = async (ctx, next) => {
   }
 };
 
-export const cors = async (ctx, next) => {
-  ctx.set('Access-Control-Allow-Origin', config.domain);
-  ctx.set('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
-  ctx.set('Access-Control-Allow-Credentials', 'true');
+// export const cors = async (ctx, next) => {
+//   ctx.set('Access-Control-Allow-Origin', config.domain);
+//   ctx.set('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
+//   ctx.set('Access-Control-Allow-Credentials', 'true');
 
-  console.log(`${ctx.method} ${ctx.path}`);
-  if (ctx.method !== 'OPTIONS') {
-    await next();
-  } else {
-    ctx.body = '';
-    ctx.status = 204;
-  }
-};
+//   console.log(`${ctx.method} ${ctx.path}`);
+//   if (ctx.method !== 'OPTIONS') {
+//     await next();
+//   } else {
+//     ctx.body = '';
+//     ctx.status = 204;
+//   }
+// };
